@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Photography Challenge</title>
+    <!---Custom CSS File--->
+    <link rel="stylesheet" href="style.css" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  </head>
+  <body>
+    <section class="container">
+      <header>WORLD PHOTOGRAPHY DAY 📸</header>
+      <form id="submit-form" method="POST" action="https://script.google.com/macros/s/AKfycbwcBNqlr6VHmMTnx10pt3p_onE5CGVnhlgxWoaRuqtUiiei88iOZnoWUN_j2qNtn1In/exec" class="form" enctype="multipart/form-data">
+        <div class="input-box">
+          <label>Full Name</label>
+          <input type="text" name="fullname" placeholder="Enter full name" required />
+        </div>
+
+        <div class="input-box">
+          <label>Class and Division</label>
+          <input type="text" name="class" placeholder="Enter class and division" required />
+        </div>
+        <input type="file" name="imageUpload">
+        <input type="hidden" name="imageUrl">
+        <button type="submit" value="Submit">Submit</button>
+      </form>
+    </section>
+
+    <script>
+      $("#submit-form").submit((e)=>{
+          e.preventDefault()
+          $.ajax({
+              url:"https://script.google.com/macros/s/AKfycbwcBNqlr6VHmMTnx10pt3p_onE5CGVnhlgxWoaRuqtUiiei88iOZnoWUN_j2qNtn1In/exec",
+              data:$("#submit-form").serialize(),
+              method:"post",
+              success:function (response){
+                  alert("Form submitted successfully")
+                  window.location.reload()
+                  window.location.href="/"
+              },
+              error:function (err){
+                  alert("Something Error")
+  
+              }
+          })
+      })
+  </script>
+  </body>
+</html>
