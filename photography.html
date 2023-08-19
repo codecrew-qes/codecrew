@@ -3,49 +3,259 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <title>Photography Challenge</title>
-    <!---Custom CSS File--->
-    <link rel="stylesheet" href="style.css" />
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <title>Photography Day Competition</title>
+    <!-- Meta SEO -->
+    <meta name="title" content="Landwind - Tailwind CSS Landing Page" />
+    <meta
+      name="description"
+      content="Code Crew an IT club started by Qadisiya School to unleash student's potentials"
+    />
+    <meta name="robots" content="index, follow" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="language" content="English" />
+    <meta name="author" content="Code Crew" />
+
+    <!-- Social media share -->
+    <meta property="og:title" content="Photography Competition By Code Crew" />
+    <meta property="og:site_name" content="Code Crew" />
+    <meta
+      property="og:url"
+      content="https://codecrew-qes.github.io/codecrew/photography.html/"
+    />
+    <meta
+      property="og:description"
+      content="World Photography Day Competition"
+    />
+    <meta property="og:type" content="Education" />
+    <meta
+      property="og:image"
+      content="https://assets.thehansindia.com/h-upload/2021/07/08/1087103-photographer.jpg"
+    />
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap");
+      body {
+        font-family: Arial, sans-serif;
+        text-align: center;
+        margin: 6;
+        padding: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        background: url("https://png.pngtree.com/background/20210711/original/pngtree-vintage-pattern-camera-vector-picture-image_1162848.jpg");
+        background-size: cover;
+        background-position: center;
+        overflow: hidden;
+      }
+
+      h1 {
+        font-family: "Bebas Neue", sans-serif;
+        margin-top: 20px;
+        color: #333;
+      }
+
+      #image-form {
+        width: 100%;
+        max-width: 400px;
+        padding: 20px;
+        background-color: rgba(255, 255, 255, 0.9);
+        border-radius: 8px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      }
+
+      input[type="text"],
+      button {
+        width: 100%;
+        padding: 10px;
+        margin-bottom: 10px;
+        margin-left: -10px;
+        border: 1px solid rgb(176 141 237 / 74%);
+        border-radius: 4px;
+        font-size: 16px;
+      }
+
+      input[type="file"]::file-selector-button {
+        width: 136px;
+        color: transparent;
+      }
+
+      /* Faked label styles and icon */
+      input[type="file"]::before {
+        position: absolute;
+        pointer-events: none;
+        /*   top: 11px; */
+        left: 40px;
+        color: rgb(108 43 217);
+        content: "Upload File";
+      }
+
+      input[type="file"]::after {
+        position: absolute;
+        pointer-events: none;
+        /*   top: 10px; */
+        left: 16px;
+        height: 20px;
+        width: 20px;
+        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%230964B0'%3E%3Cpath d='M18 15v3H6v-3H4v3c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2v-3h-2zM7 9l1.41 1.41L11 7.83V16h2V7.83l2.59 2.58L17 9l-5-5-5 5z'/%3E%3C/svg%3E");
+      }
+
+      input[type="file"] {
+        outline: none;
+        padding: 4px;
+        margin: -4px;
+        margin-bottom: 10px;
+      }
+
+      input[type="file"]:focus-within::file-selector-button,
+      input[type="file"]:focus::file-selector-button {
+        outline: 2px solid rgb(108 43 217);
+        outline-offset: 2px;
+      }
+
+      input[type="file"]::before {
+        top: 16px;
+      }
+
+      input[type="file"]::after {
+        top: 14px;
+      }
+
+      /* ------- From Step 2 ------- */
+
+      input[type="file"] {
+        position: relative;
+      }
+
+      /* ------- From Step 1 ------- */
+
+      /* file upload button */
+      input[type="file"]::file-selector-button {
+        border-radius: 4px;
+        padding: 0 16px;
+        height: 40px;
+        cursor: pointer;
+        background-color: white;
+        border: 1px solid rgba(0, 0, 0, 0.16);
+        box-shadow: 0px 1px 0px rgba(0, 0, 0, 0.05);
+        margin-right: 16px;
+        transition: background-color 200ms;
+      }
+
+      /* file upload button hover state */
+      input[type="file"]::file-selector-button:hover {
+        background-color: #f3f4f6;
+      }
+
+      /* file upload button active state */
+      input[type="file"]::file-selector-button:active {
+        background-color: #e5e7eb;
+      }
+
+      button {
+        --tw-bg-opacity: 1;
+        background-color: rgb(108 43 217 / var(--tw-bg-opacity));
+        color: white;
+        border: none;
+        cursor: pointer;
+        transition: background-color 0.3s;
+      }
+    </style>
   </head>
   <body>
-    <section class="container">
-      <header>WORLD PHOTOGRAPHY DAY 📸</header>
-      <form id="submit-form" method="POST" action="https://script.google.com/macros/s/AKfycbwcBNqlr6VHmMTnx10pt3p_onE5CGVnhlgxWoaRuqtUiiei88iOZnoWUN_j2qNtn1In/exec" class="form" enctype="multipart/form-data">
-        <div class="input-box">
-          <label>Full Name</label>
-          <input type="text" name="fullname" placeholder="Enter full name" required />
-        </div>
+    <form id="image-form">
+      <h1>Photography Day Competition</h1>
+      <input type="text" id="full-name" placeholder="Full Name" required />
+      <input type="text" id="class" placeholder="Class" required />
+      <input type="text" id="division" placeholder="Division" required />
+      <input type="file" id="image-input" accept="image/*" required />
+      <button type="submit">Submit Entry</button>
+    </form>
 
-        <div class="input-box">
-          <label>Class and Division</label>
-          <input type="text" name="class" placeholder="Enter class and division" required />
-        </div>
-        <input type="file" name="imageUpload">
-        <input type="hidden" name="imageUrl">
-        <button type="submit" value="Submit">Submit</button>
-      </form>
-    </section>
-
+    <script src="https://www.gstatic.com/firebasejs/8.2.9/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.2.9/firebase-storage.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.2.9/firebase-database.js"></script>
+    <!-- Include the Realtime Database SDK -->
     <script>
-      $("#submit-form").submit((e)=>{
-          e.preventDefault()
-          $.ajax({
-              url:"https://script.google.com/macros/s/AKfycbwcBNqlr6VHmMTnx10pt3p_onE5CGVnhlgxWoaRuqtUiiei88iOZnoWUN_j2qNtn1In/exec",
-              data:$("#submit-form").serialize(),
-              method:"post",
-              success:function (response){
-                  alert("Form submitted successfully")
-                  window.location.reload()
-                  window.location.href="/"
-              },
-              error:function (err){
-                  alert("Something Error")
-  
-              }
-          })
-      })
-  </script>
+      // Initialize Firebase
+      const firebaseConfig = {
+        apiKey: "AIzaSyDyr3hIPgoTZeGjs8cN1SuQEFTIa4ycRfw",
+        authDomain: "codecrew-78f8b.firebaseapp.com",
+        databaseURL: "https://codecrew-78f8b-default-rtdb.firebaseio.com",
+        projectId: "codecrew-78f8b",
+        storageBucket: "codecrew-78f8b.appspot.com",
+        messagingSenderId: "607506173304",
+        appId: "1:607506173304:web:000250453487a6242b8c8d",
+      };
+      firebase.initializeApp(firebaseConfig);
+
+      const imageForm = document.getElementById("image-form");
+      const fullNameInput = document.getElementById("full-name");
+      const classInput = document.getElementById("class");
+      const divisionInput = document.getElementById("division");
+      const imageInput = document.getElementById("image-input");
+      const uploadProgress = document.getElementById("upload-progress");
+
+      imageForm.addEventListener("submit", async (e) => {
+        e.preventDefault();
+
+        const fullName = fullNameInput.value;
+        const studentClass = classInput.value;
+        const studentDivision = divisionInput.value;
+        const file = imageInput.files[0];
+
+        if (fullName && studentClass && studentDivision && file) {
+          const storageRef = firebase.storage().ref();
+          const imageRef = storageRef.child(`images/${file.name}`);
+          const uploadTask = imageRef.put(file);
+
+          uploadTask.on(
+            "state_changed",
+            (snapshot) => {
+              const progress =
+                (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+              uploadProgress.value = progress;
+            },
+            (error) => {
+              console.error("Upload Error:", error);
+              window.alert("Upload failed. Please try again.");
+            },
+            async () => {
+              console.log("Upload Complete");
+              uploadProgress.value = 0;
+
+              // Get the download URL of the uploaded image
+              const downloadURL = await imageRef.getDownloadURL();
+
+              // After the image is uploaded
+              const db = firebase.database();
+
+              // Store the entry information in the Realtime Database
+              const entriesRef = db.ref("competition_entries");
+              entriesRef.push(
+                {
+                  full_name: fullName,
+                  class: studentClass,
+                  division: studentDivision,
+                  image_url: downloadURL,
+                },
+                (error) => {
+                  if (error) {
+                    console.error("Error storing entry:", error);
+                    window.alert("Upload failed. Please try again.");
+                  } else {
+                    console.log("Entry stored in the Realtime Database");
+                    window.alert("Upload successful!");
+                    // Redirect to a new window or URL
+                    window.location.href = "https://codecrew-qes.github.io/codecrew/";
+                  }
+                }
+              );
+            }
+          );
+        } else {
+          window.alert("Please fill in all fields and choose an image.");
+        }
+      });
+    </script>
   </body>
 </html>
