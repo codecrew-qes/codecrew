@@ -160,6 +160,25 @@
         cursor: pointer;
         transition: background-color 0.3s;
       }
+      #progress-container {
+        width: 50%;
+        margin: 50px auto;
+        text-align: center;
+      }
+
+      #progress-bar {
+        width: 0;
+        height: 20px;
+        background-color: rgb(108 43 217); /* Progress bar color */
+        border-radius: 10px;
+        transition: width 0.3s;
+      }
+
+      #progress-text {
+        margin-top: 10px;
+        font-size: 16px;
+        color: #333;
+      }
     </style>
   </head>
   <body>
@@ -169,6 +188,10 @@
       <input type="text" id="class" placeholder="Class" required />
       <input type="text" id="division" placeholder="Division" required />
       <input type="file" id="image-input" accept="image/*" required />
+      <div id="progress-container">
+        <div id="progress-bar"></div>
+        <div id="progress-text">0%</div>
+      </div>
       <button type="submit">Submit Entry</button>
     </form>
 
@@ -177,6 +200,14 @@
     <script src="https://www.gstatic.com/firebasejs/8.2.9/firebase-database.js"></script>
     <!-- Include the Realtime Database SDK -->
     <script>
+const progressBar = document.getElementById("progress-bar");
+const progressText = document.getElementById("progress-text");
+
+function updateProgressBar(value) {
+  const roundedValue = value.toFixed(2); // Display up to 2 decimal places
+  progressBar.style.width = roundedValue + "%";
+  progressText.textContent = roundedValue + "%";
+}
       // Initialize Firebase
       const firebaseConfig = {
         apiKey: "AIzaSyDyr3hIPgoTZeGjs8cN1SuQEFTIa4ycRfw",
@@ -214,11 +245,7 @@
             (snapshot) => {
               const progress =
                 (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
-              if (uploadProgress) {
-                uploadProgress.value = progress;
-              } else {
-                console.error("uploadProgress element not found.");
-              }
+              updateProgressBar(progress);
             },
             (error) => {
               console.error("Upload Error:", error);
