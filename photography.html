@@ -31,7 +31,7 @@
       property="og:image"
       content="https://assets.thehansindia.com/h-upload/2021/07/08/1087103-photographer.jpg"
     />
-    <link rel="icon" type="image/png" href="logo.png">
+    <link rel="icon" type="image/png" href="logo.png" />
     <style>
       @import url("https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap");
       body {
@@ -214,7 +214,11 @@
             (snapshot) => {
               const progress =
                 (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
-              uploadProgress.value = progress;
+              if (uploadProgress) {
+                uploadProgress.value = progress;
+              } else {
+                console.error("uploadProgress element not found.");
+              }
             },
             (error) => {
               console.error("Upload Error:", error);
@@ -222,7 +226,11 @@
             },
             async () => {
               console.log("Upload Complete");
-              uploadProgress.value = 0;
+              if (uploadProgress) {
+                uploadProgress.value = 0;
+              } else {
+                console.error("uploadProgress element not found.");
+              }
 
               // Get the download URL of the uploaded image
               const downloadURL = await imageRef.getDownloadURL();
@@ -247,7 +255,8 @@
                     console.log("Entry stored in the Realtime Database");
                     window.alert("Upload successful!");
                     // Redirect to a new window or URL
-                    window.location.href = "https://codecrew-qes.github.io/codecrew/";
+                    window.location.href =
+                      "https://codecrew-qes.github.io/codecrew/";
                   }
                 }
               );
